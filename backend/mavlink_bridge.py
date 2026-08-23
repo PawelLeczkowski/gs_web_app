@@ -100,7 +100,7 @@ class MavlinkBridge(Node):
 
         if mavlink_port:
             logger.info(f"Using specified MAVLink port: {mavlink_port}")
-            self.master = mavutil.mavlink_connection(mavlink_port, baud=baudrate, dialect="simba")
+            self.master = mavutil.mavlink_connection(mavlink_port, baud=baudrate)
         else:
             self.master = self.find_mavlink_connection()
 
@@ -347,14 +347,13 @@ class MavlinkBridge(Node):
         except Exception as e:
             logger.error(f"Error handling GS switches: {e}")
 
-    def find_mavlink_connection(self, baudrate=57600, dialect="simba", retry_delay=1):
+    def find_mavlink_connection(self, baudrate=57600, retry_delay=1):
         while True:
             ports = serial.tools.list_ports.comports()
             for port in ports:
                 try:
                     logger.info(f"Trying port: {port.device}")
-                    conn = mavutil.mavlink_connection(
-                        port.device, baud=baudrate, dialect=dialect)
+                    conn = mavutil.mavlink_connection(port.device, baud=baudrate)
                     # conn.wait_heartbeat(timeout=timeout)
                     logger.info(f"MAVLink heartbeat received on {port.device}")
                     return conn
