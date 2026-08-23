@@ -19,7 +19,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend .
-COPY drivers .
+COPY drivers ./drivers
 COPY mavlink ./mavlink
 COPY shared ./shared
 COPY config.json /simba_ws

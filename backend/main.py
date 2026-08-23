@@ -92,7 +92,10 @@ calibration_node = CalibrationPublisher()
 bridge_node = None
 if MavlinkBridge:
     try:
-        bridge_node = MavlinkBridge()
+        bridge_node = MavlinkBridge(
+            control_panel_port=os.getenv("CONTROL_PANEL_PORT", "/dev/ttyACM0"),
+            mavlink_port=os.getenv("MAVLINK_PORT", "/dev/ttyUSB0"),
+        )
         logger.info("MavlinkBridge node instantiated successfully.")
     except Exception as e:
         logger.error(f"Failed to instantiate MavlinkBridge: {e}")
