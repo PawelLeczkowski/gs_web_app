@@ -26,6 +26,11 @@ InfluxDB should be available on `http://127.0.0.1:8086`
 
 ## Useful docker tips
 
+The best way to work with app is to connect to control panel via ssh:
+```bash
+ssh simba@192.168.10.101
+```
+
 To close app run
 ```bash
 sudo docker compose -p gs_web_app stop
