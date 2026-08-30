@@ -11,6 +11,8 @@ Clone this repo and its submodules
 ```bash
 git clone --recursive https://github.com/Simba-Avionic/gs_web_app
 ```
+**Make sure to download and update the app before leaving for the field**  
+Downloading Docker images and external dependencies on-site might be difficult or impossible due to problems with internet connection.
 
 ## Launching the app
 
